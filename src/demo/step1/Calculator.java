@@ -2,6 +2,7 @@ package demo.step1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Calculator {
@@ -20,12 +21,18 @@ public class Calculator {
             }
 
             if(!command.equals("")){
-                result = logical(list, command, result);
-                logicPrint(list, command, result);
+//                result = logical(list, command, result);
+                Optional<Integer> integer = list.stream().reduce((r1, r2) -> add(r1, r2));
+                System.out.println("adafsd");
+                logicPrint(list, command, integer.get());
 
                 command = clear(list);
             }
         }
+
+
+
+
     }
 
     private static String clear(List<Integer> list) {
