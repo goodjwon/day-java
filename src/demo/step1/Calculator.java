@@ -67,7 +67,7 @@ public class Calculator {
         return result;
     }
 
-    public static int add(int a, int b) {
+    public static Integer add(int a, int b) {
         return a + b;
     }
 
@@ -81,4 +81,5 @@ public class Calculator {
     public static int multiply(int a, int b) {
         return a * b;
     }
+
 }
