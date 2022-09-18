@@ -2,10 +2,11 @@ package demo.step1;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
-public class Calculator {
+
+
+public class Main4{
     public static void main(String[] args) {
         System.out.println("Please input a number");
         Scanner scanner = new Scanner(System.in);
@@ -21,50 +22,34 @@ public class Calculator {
             }
 
             if(!command.equals("")){
-//                result = logical(list, command, result);
-                Optional<Integer> integer = list.stream().reduce((r1, r2) -> add(r1, r2));
-                System.out.println("adafsd");
-                logicPrint(list, command, integer.get());
-
+                result = Calculator.logical(command, list);
+                Calculator.logicPrint(list, command, result);
                 command = clear(list);
             }
         }
-
-
-
-
     }
 
-    private static String clear(List<Integer> list) {
+    static String clear(List<Integer> list) {
         String command;
         list.clear();
         command = "";
         return command;
     }
+}
 
-    private static void logicPrint(List<Integer> list, String command, Integer result){
+class Calculator {
+    static void logicPrint(List<Integer> list, String command, Integer result){
         System.out.println(list.get(0) +" "+ command +" "+ list.get(1) + " = ".concat(String.valueOf(result)));
     }
 
-    private static Integer logical(List<Integer> list, String command, Integer result) {
-        switch (command){
-            case "+" :
-                result = add(list.get(0), list.get(1));
-                break;
-            case "-":
-                result = minus(list.get(0), list.get(1));
-                break;
-            case "/":
-                result = divide(list.get(0), list.get(1));
-                break;
-            case "*":
-                result = multiply(list.get(0), list.get(1));
-                break;
-            default:
-                System.out.println("지원하지 않는 연산 기호 입니다.");
-                break;}
-
-        return result;
+    static Integer logical(String command, List<Integer> list) {
+        return switch (command) {
+            case "+" -> list.stream().reduce((r1, r2) -> add(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+            case "-" -> list.stream().reduce((r1, r2) -> minus(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+            case "*" -> list.stream().reduce((r1, r2) -> multiply(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+            case "/" -> list.stream().reduce((r1, r2) -> divide(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+            default -> throw new RuntimeException("error");
+        };
     }
 
     public static Integer add(int a, int b) {
