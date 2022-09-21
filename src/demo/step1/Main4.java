@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 public class Main4{
     public static void main(String[] args) {
         System.out.println("Please input a number");
@@ -24,16 +22,9 @@ public class Main4{
             if(!command.equals("")){
                 result = Calculator.logical(command, list);
                 Calculator.logicPrint(list, command, result);
-                command = clear(list);
+                command = Calculator.clear(list);
             }
         }
-    }
-
-    static String clear(List<Integer> list) {
-        String command;
-        list.clear();
-        command = "";
-        return command;
     }
 }
 
@@ -57,14 +48,20 @@ class Calculator {
     }
 
     public static int divide(int a, int b) {
-        if(b == 0) {return 0;}
-        return a / b;
+        if(b == 0) {return 0;} return a / b;
     }
     public static int minus(int a, int b) {
         return a - b;
     }
     public static int multiply(int a, int b) {
         return a * b;
+    }
+
+    static String clear(List<Integer> list) {
+        String command;
+        list.clear();
+        command = "";
+        return command;
     }
 
 }
