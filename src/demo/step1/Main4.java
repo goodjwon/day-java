@@ -34,13 +34,14 @@ class Calculator {
     }
 
     static Integer logical(String command, List<Integer> list) {
-        return switch (command) {
-            case "+" -> list.stream().reduce((r1, r2) -> add(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
-            case "-" -> list.stream().reduce((r1, r2) -> minus(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
-            case "*" -> list.stream().reduce((r1, r2) -> multiply(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
-            case "/" -> list.stream().reduce((r1, r2) -> divide(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
-            default -> throw new RuntimeException("error");
-        };
+//        return switch (command) {
+////            case "+" -> list.stream().reduce((r1, r2) -> add(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+////            case "-" -> list.stream().reduce((r1, r2) -> minus(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+////            case "*" -> list.stream().reduce((r1, r2) -> multiply(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+////            case "/" -> list.stream().reduce((r1, r2) -> divide(r1, r2)).orElseThrow(()-> new RuntimeException("error"));
+////            default -> throw new RuntimeException("error");
+//        };
+        return 0;
     }
 
     public static Integer add(int a, int b) {
