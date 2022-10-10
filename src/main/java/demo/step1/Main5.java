@@ -7,8 +7,10 @@ import java.util.Scanner;
 
 public class Main5 {
     public static void main(String[] args) throws ScriptException {
-        ScriptEngineManager manager = new ScriptEngineManager();
-        ScriptEngine engine = manager.getEngineByName("js");
+//        ScriptEngine engine = new ScriptEngineManager().getEngineByName("graal.js");
+
+
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
 
         Scanner scan = new Scanner(System.in);
 
